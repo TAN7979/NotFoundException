@@ -17,6 +17,11 @@ public class Repository {
     }
 
     public void removeById(int id){ // метод удаление по ID
+
+        if(findById(id) == null){//если в методе findById(id) результат равен null
+            throw new NotFoundException(id);//тогда вызываем ошибку NotFoundException(id)
+        }
+
         Product[] tmp = new Product[products.length -1];// новый масси для удаления
         int indexInsert = 0;// переменная для удаления
         for (Product product : products){//счетчик
@@ -27,6 +32,16 @@ public class Repository {
         }
         products = tmp; //присвоить полю Продукт новый массив
     }
+
+    public Product findById(int id) {//метод поска по ID
+        for (Product product : products) {//в каком массиве ищем
+            if (product.getId() == id) {// если ID продукта равно ID которое ищем
+                return product;//продукт возвращаем
+            }
+        }
+        return null;// если нет ID не совпадает возвращаем null
+    }
+
     public Product[] findAll(){ //метод получать все сохраненные
         return products;
     }
@@ -38,5 +53,7 @@ public class Repository {
     public void setProducts(Product[] products) {
         this.products = products;
     }
+
+
 }
 

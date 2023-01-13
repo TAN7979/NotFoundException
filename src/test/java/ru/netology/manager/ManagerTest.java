@@ -14,7 +14,8 @@ public class ManagerTest {
     Smartphone smart3 = new Smartphone(3, "HP 3", 31, "HP");
     Book book4 = new Book(4, "masks", 41, "Metelsky");
     Book book5 = new Book(5, "witchery", 51, "Vasiliev");
-    Book book6 = new Book(6, "legacy", 61, "Tarmyshev");
+    Book book6 = new Book(6, "legacy 1", 61, "Tarmyshev");
+    Book book7 = new Book(7, "legacy 2", 71, "Tarmyshev");
 
 
     @Test
@@ -28,6 +29,7 @@ public class ManagerTest {
         manager.add(book4);
         manager.add(book5);
         manager.add(book6);
+        manager.add(book7);
 
         Product[] expected = {smart2};
         Product[] actual = manager.searchBy("LG");
@@ -45,13 +47,14 @@ public class ManagerTest {
         manager.add(book4);
         manager.add(book5);
         manager.add(book6);
+        manager.add(book7);
 
         Product[] expected = {book4};
         Product[] actual = manager.searchBy("masks");
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
-    public void checkMatchesSmart() {
+    public void checkMatchesSmart() {//метод определения товара запросу Смарт
         Repository repo = new Repository();
         Manager manager = new Manager(repo);
 
@@ -61,6 +64,7 @@ public class ManagerTest {
         manager.add(book4);
         manager.add(book5);
         manager.add(book6);
+        manager.add(book7);
         manager.matches(smart3, "HP");
 
         boolean expected = true;
@@ -68,7 +72,7 @@ public class ManagerTest {
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void checkMatchesBook() {
+    public void checkMatchesBook() {// определение товара запросу Книга
         Repository repo = new Repository();
         Manager manager = new Manager(repo);
 
@@ -78,12 +82,31 @@ public class ManagerTest {
         manager.add(book4);
         manager.add(book5);
         manager.add(book6);
-        manager.matches(book5, "witchery");
+        manager.add(book7);
+        manager.matches(book6, "legacy");
 
         boolean expected = true;
-        boolean actual = manager.matches(book5, "witchery");
+        boolean actual = manager.matches(book6,   "legacy");
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void checkSearchByBook() {// поиск одинакового товара по тексту
+        Repository repo = new Repository();
+        Manager manager = new Manager(repo);
+
+        manager.add(smart1);
+        manager.add(smart2);
+        manager.add(smart3);
+        manager.add(book4);
+        manager.add(book5);
+        manager.add(book6);
+        manager.add(book7);
+
+        Product[] expected = {book6, book7};
+        Product[] actual = manager.searchBy("legacy");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
 
 }
 

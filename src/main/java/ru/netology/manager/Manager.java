@@ -16,19 +16,19 @@ public class Manager {
         repo.save(product);
     }
 
-    public Product[] searchBy(String text) {// методо поиска по названию
-        Product[] result = new Product[0]; // тут будем хранить подошедшие запросу продукты
-        for (Product product : repo.findAll()) {
-            if (matches(product, text)) {
-                Product[] tmp = new Product[result.length + 1];
-                for (int i = 0; i < result.length; i++) {
-                    tmp[i] = result[i];
+    public Product[] searchBy(String text) {// методо поиска по тексту
+        Product[] result = new Product[0]; // массив где будут храниться найденные продукты
+        for (Product product : repo.findAll()) {//цикл поиска в массиве продукт
+            if (matches(product, text)) {//если текст в продукте соответсвует
+                Product[] tmp = new Product[result.length + 1];// добавляем найденные товары в массив
+                for (int i = 0; i < result.length; i++) {//цикл суммирования найденных товаров
+                    tmp[i] = result[i];//скопировали все найденные товары в ячейку tmp
                 }
-                tmp [result.length] = product;
-                result = tmp;
+                tmp [result.length] = product;//
+                result = tmp;//меняем старый массив на новый (найденные товары)
             }
         }
-        return result;
+        return result;//массив найденных товаров
     }
     public boolean matches(Product product, String search) { // метод определения соответствия товара запросу
         if (product.getName().contains(search)) {

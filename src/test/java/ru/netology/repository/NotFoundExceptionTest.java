@@ -8,7 +8,7 @@ import ru.netology.product.Smartphone;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class NotFoundExceptioneTest {
+public class NotFoundExceptionTest {
     Repository repo = new Repository();
     Smartphone smart1 = new Smartphone(1, "Sony 1", 11, "Sony");
     Smartphone smart2 = new Smartphone(2, "LG 2", 21, "LG");

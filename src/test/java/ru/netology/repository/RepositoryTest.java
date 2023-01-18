@@ -45,7 +45,7 @@ public class RepositoryTest {
         repo.save(book7);
         repo.removeById(book6.getId());
 
-        Product[] expected = {smart1, smart2, smart3,book5, book6, book7};
+        Product[] expected = {smart1, smart2, smart3,book4, book5, book7};
         Product[] actual = repo.getProducts();
         Assertions.assertArrayEquals(expected, actual);
     }

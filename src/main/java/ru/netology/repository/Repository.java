@@ -44,7 +44,7 @@ public class Repository {
 
     public Product[] findAll(){ //метод получать все сохраненные
         return products;
-    }
+    }//метод хранить массив Продукт
 
     public Product[] getProducts() {
         return products;

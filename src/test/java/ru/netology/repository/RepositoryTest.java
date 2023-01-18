@@ -18,7 +18,7 @@ public class RepositoryTest {
     Book book6 = new Book(6, "legacy 1", 61, "Tarmyshev");
     Book book7 = new Book(7, "legacy 2", 71, "Tarmyshev");
     @Test
-    public void checkRemoveByIdSmart() {
+    public void checkRemoveByIdSmart() {// удаления по Id Smart
 
         repo.save(smart1);
         repo.save(smart2);
@@ -29,12 +29,12 @@ public class RepositoryTest {
         repo.save(book7);
         repo.removeById(smart1.getId());
 
-        Product[] expected = {smart2, smart3, book4, book5, book6};
+        Product[] expected = {smart2, smart3, book4, book5, book6, book7};
         Product[] actual = repo.getProducts();
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
-    public void checkRemoveByIdBook() {
+    public void checkRemoveByIdBook() {//  удаления по Id Book
 
         repo.save(smart1);
         repo.save(smart2);
@@ -45,7 +45,7 @@ public class RepositoryTest {
         repo.save(book7);
         repo.removeById(book6.getId());
 
-        Product[] expected = {smart1, smart2, smart3,book5, book6};
+        Product[] expected = {smart1, smart2, smart3,book5, book6, book7};
         Product[] actual = repo.getProducts();
         Assertions.assertArrayEquals(expected, actual);
     }

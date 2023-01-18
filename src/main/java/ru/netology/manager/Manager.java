@@ -7,7 +7,7 @@ public class Manager {
 
     private Repository repo;// добавли репозиторий
 
-    public Manager(Repository repo) {//конструктор
+    public Manager(Repository repo) {//конструктор Манагер
         this.repo = repo; //объект метод которого используем
     }
 

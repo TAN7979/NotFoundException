@@ -90,7 +90,7 @@ public class ManagerTest {
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void checkSearchByBook() {// поиск одинакового товара по тексту
+    public void checkSearchByProduct() {// поиск одинакового товара по тексту
         Repository repo = new Repository();
         Manager manager = new Manager(repo);
 

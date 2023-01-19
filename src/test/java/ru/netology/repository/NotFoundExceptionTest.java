@@ -29,6 +29,7 @@ public class NotFoundExceptionTest {
         repo.save(book6);
         repo.save(book7);
 
-        Assertions.assertThrows(NotFoundException.class, ()-> repo.removeById(8));
+        Assertions.assertThrows(NotFoundException.class, ()->
+                {repo.removeById(8);});
     }
 }
